@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Copyright (c) 2011-2017 Nexmo Inc<a name="line.2"></a>
+<span class="sourceLineNo">003</span> *<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * in the Software without restriction, including without limitation the rights<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * furnished to do so, subject to the following conditions:<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * The above copyright notice and this permission notice shall be included in<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * all copies or substantial portions of the Software.<a name="line.12"></a>
+<span class="sourceLineNo">013</span> *<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * THE SOFTWARE.<a name="line.20"></a>
+<span class="sourceLineNo">021</span> */<a name="line.21"></a>
+<span class="sourceLineNo">022</span>package com.nexmo.messaging.sdk.messages;<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24"></a>
+<span class="sourceLineNo">025</span>/**<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * Represents the details of a wap-push message that is to be submitted via the Nexmo REST api.<a name="line.26"></a>
+<span class="sourceLineNo">027</span> *<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * @author  Paul Cook<a name="line.28"></a>
+<span class="sourceLineNo">029</span> */<a name="line.29"></a>
+<span class="sourceLineNo">030</span>public class WapPushMessage extends Message {<a name="line.30"></a>
+<span class="sourceLineNo">031</span><a name="line.31"></a>
+<span class="sourceLineNo">032</span>    private static final long serialVersionUID = -8412926886570923963L;<a name="line.32"></a>
+<span class="sourceLineNo">033</span><a name="line.33"></a>
+<span class="sourceLineNo">034</span>    /**<a name="line.34"></a>
+<span class="sourceLineNo">035</span>     * Instantiate a new wap-push message request, to submit a browsable / downloadable URL to the handset<a name="line.35"></a>
+<span class="sourceLineNo">036</span>     *<a name="line.36"></a>
+<span class="sourceLineNo">037</span>     * @param from the 'from' address that will be seen on the handset when this message arrives,<a name="line.37"></a>
+<span class="sourceLineNo">038</span>     *             typically either a valid short-code / long code that can be replied to, or a short text description of the application sending the message (Max 11 chars)<a name="line.38"></a>
+<span class="sourceLineNo">039</span>     * @param to   the phone number of the handset that you wish to send the message to<a name="line.39"></a>
+<span class="sourceLineNo">040</span>     * @param wapPushUrl This is the url that will be submitted to the handset and will appear as a browsable message in the Inbox.<a name="line.40"></a>
+<span class="sourceLineNo">041</span>     * @param wapPushTitle This is the title that will be associated with the url being submitted to the handset<a name="line.41"></a>
+<span class="sourceLineNo">042</span>     */<a name="line.42"></a>
+<span class="sourceLineNo">043</span>    public WapPushMessage(final String from,<a name="line.43"></a>
+<span class="sourceLineNo">044</span>                          final String to,<a name="line.44"></a>
+<span class="sourceLineNo">045</span>                          final String wapPushUrl,<a name="line.45"></a>
+<span class="sourceLineNo">046</span>                          final String wapPushTitle) {<a name="line.46"></a>
+<span class="sourceLineNo">047</span>        super(MESSAGE_TYPE_WAPPUSH,<a name="line.47"></a>
+<span class="sourceLineNo">048</span>              from,<a name="line.48"></a>
+<span class="sourceLineNo">049</span>              to,<a name="line.49"></a>
+<span class="sourceLineNo">050</span>              null,<a name="line.50"></a>
+<span class="sourceLineNo">051</span>              null,<a name="line.51"></a>
+<span class="sourceLineNo">052</span>              null,<a name="line.52"></a>
+<span class="sourceLineNo">053</span>              null,<a name="line.53"></a>
+<span class="sourceLineNo">054</span>              false,<a name="line.54"></a>
+<span class="sourceLineNo">055</span>              false,<a name="line.55"></a>
+<span class="sourceLineNo">056</span>              wapPushUrl,<a name="line.56"></a>
+<span class="sourceLineNo">057</span>              wapPushTitle,<a name="line.57"></a>
+<span class="sourceLineNo">058</span>              0,<a name="line.58"></a>
+<span class="sourceLineNo">059</span>              null,<a name="line.59"></a>
+<span class="sourceLineNo">060</span>              null);<a name="line.60"></a>
+<span class="sourceLineNo">061</span>    }<a name="line.61"></a>
+<span class="sourceLineNo">062</span><a name="line.62"></a>
+<span class="sourceLineNo">063</span>    /**<a name="line.63"></a>
+<span class="sourceLineNo">064</span>     * Instantiate a new wap-push message request, to submit a browsable / downloadable URL to the handset,<a name="line.64"></a>
+<span class="sourceLineNo">065</span>     * attaching an optional client reference, and optionally requesting a delivery notification<a name="line.65"></a>
+<span class="sourceLineNo">066</span>     *<a name="line.66"></a>
+<span class="sourceLineNo">067</span>     * @param from the 'from' address that will be seen on the handset when this message arrives,<a name="line.67"></a>
+<span class="sourceLineNo">068</span>     *             typically either a valid short-code / long code that can be replied to, or a short text description of the application sending the message (Max 11 chars)<a name="line.68"></a>
+<span class="sourceLineNo">069</span>     * @param to   the phone number of the handset that you wish to send the message to<a name="line.69"></a>
+<span class="sourceLineNo">070</span>     * @param clientReference This is a user definable reference that will be stored in the Nexmo messaging records. It will be available in detailed reporting / analytics<a name="line.70"></a>
+<span class="sourceLineNo">071</span>     *                        In order to help with reconciliation of messages<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     * @param statusReportRequired If set to true, then a delivery notification will be requested for this message delivery attempt.<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     *                             Upon receiving notification of delivery or failure from the network, the Nexmo platform will submit a notification to the url configured in your<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     *                             Nexmo REST account that represents the outcome of this message.<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * @param wapPushUrl This is the url that will be submitted to the handset and will appear as a browsable message in the Inbox.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * @param wapPushTitle This is the title that will be associated with the url being submitted to the handset<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     * @param wapPushValidity This is the length of time (in seconds) that the message will be available for once delivered to the handset.<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     *                        Once this time has expired, the url will no longer be visible on the handset to be browsed (Subject to handset compatibility)<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>    public WapPushMessage(final String from,<a name="line.80"></a>
+<span class="sourceLineNo">081</span>                          final String to,<a name="line.81"></a>
+<span class="sourceLineNo">082</span>                          final String clientReference,<a name="line.82"></a>
+<span class="sourceLineNo">083</span>                          final boolean statusReportRequired,<a name="line.83"></a>
+<span class="sourceLineNo">084</span>                          final String wapPushUrl,<a name="line.84"></a>
+<span class="sourceLineNo">085</span>                          final String wapPushTitle,<a name="line.85"></a>
+<span class="sourceLineNo">086</span>                          final int wapPushValidity) {<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        super(MESSAGE_TYPE_WAPPUSH,<a name="line.87"></a>
+<span class="sourceLineNo">088</span>              from,<a name="line.88"></a>
+<span class="sourceLineNo">089</span>              to,<a name="line.89"></a>
+<span class="sourceLineNo">090</span>              null,<a name="line.90"></a>
+<span class="sourceLineNo">091</span>              null,<a name="line.91"></a>
+<span class="sourceLineNo">092</span>              null,<a name="line.92"></a>
+<span class="sourceLineNo">093</span>              clientReference,<a name="line.93"></a>
+<span class="sourceLineNo">094</span>              false,<a name="line.94"></a>
+<span class="sourceLineNo">095</span>              statusReportRequired,<a name="line.95"></a>
+<span class="sourceLineNo">096</span>              wapPushUrl,<a name="line.96"></a>
+<span class="sourceLineNo">097</span>              wapPushTitle,<a name="line.97"></a>
+<span class="sourceLineNo">098</span>              wapPushValidity,<a name="line.98"></a>
+<span class="sourceLineNo">099</span>              null,<a name="line.99"></a>
+<span class="sourceLineNo">100</span>              null);<a name="line.100"></a>
+<span class="sourceLineNo">101</span>    }<a name="line.101"></a>
+<span class="sourceLineNo">102</span><a name="line.102"></a>
+<span class="sourceLineNo">103</span>}<a name="line.103"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
